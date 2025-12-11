@@ -2,6 +2,13 @@
 
 **CSE598 Course Assignment**
 
+## LLM Disclosure
+
+This project was developed in part using GitHub Copilot (Claude Haiku 4.5) for code generation. The following components were implemented with AI assistance in this session:
+- Argument parsing setup in `main.py` with `--json`, `--html`, and `--verbose` flags
+- JSON and HTML report generation in `report.py`
+- Clean up the code (to look neater with necessary comments)
+
 ## Project Overview
 
 `win-exeplain` is a Python-based Windows executable analysis tool that parses PE (Portable Executable) files and extracts imported DLLs and API functions. The tool analyzes Windows binaries to identify their dependencies and categorize their likely capabilities based on API function imports.
