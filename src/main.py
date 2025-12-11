@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
 from .pe_parser import get_imports, PEParseError
 from .categorize import categorize_imports
 from .analyze import compute_capabilities, detect_patterns, describe_patterns
-from .report import build_text_report
+from .report import build_text_report, build_json_report, build_html_report
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -18,7 +19,21 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "path",
         help="Path to the PE file (.exe or .dll) to analyze.",
     )
-    # You can add flags like --json or --html later
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Output results in JSON format.",
+    )
+    parser.add_argument(
+        "--html",
+        action="store_true",
+        help="Generate HTML report file.",
+    )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Enable detailed output with additional information.",
+    )
     return parser.parse_args(argv)
 
 
@@ -43,11 +58,29 @@ def main(argv: list[str] | None = None) -> int:
     pattern_ids = detect_patterns(categorized)
     patterns = describe_patterns(pattern_ids)
 
-    report = build_text_report(path, imports, capabilities, patterns)
-    print(report)
+    if args.verbose:
+        print(f"[INFO] Parsed {len(imports)} DLLs with {sum(len(f) for f in imports.values())} total imports.")
+        print(f"[INFO] Detected {len(pattern_ids)} behavior patterns.")
+        print()
+
+    if args.json:
+        report = build_json_report(path, imports, capabilities, patterns)
+        print(report)
+    elif args.html:
+        html_report = build_html_report(path, imports, capabilities, patterns)
+        output_file = Path(path).stem + "_analysis.html"
+        with open(output_file, "w") as f:
+            f.write(html_report)
+        if args.verbose:
+            print(f"[INFO] HTML report saved to: {output_file}")
+        else:
+            print(f"HTML report saved to: {output_file}")
+    else:
+        report = build_text_report(path, imports, capabilities, patterns)
+        print(report)
 
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())

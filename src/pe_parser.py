@@ -11,6 +11,32 @@ class PEParseError(Exception):
     pass
 
 
+def load_pe(path: str | Path) -> pefile.PE:
+    """
+    Load and parse a PE file.
+
+    Args:
+        path: Path to the PE file.
+
+    Returns:
+        A pefile.PE object.
+
+    Raises:
+        FileNotFoundError: if the file does not exist.
+        PEParseError: if the file cannot be parsed as a PE.
+    """
+    path = Path(path)
+
+    if not path.is_file():
+        raise FileNotFoundError(f"File not found: {path}")
+
+    try:
+        pe = pefile.PE(str(path))
+        return pe
+    except pefile.PEFormatError as e:
+        raise PEParseError(f"Not a valid PE file: {path}") from e
+
+
 def get_imports(path: str | Path) -> Dict[str, List[str]]:
     """
     Parse a PE file and return its imported DLLs and function names.

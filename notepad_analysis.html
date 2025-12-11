@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>PE Analysis Report</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { color: #333; }
+h2 { color: #666; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+.capability { margin: 10px 0; padding: 10px; background-color: #f5f5f5; border-left: 4px solid #0078d4; }
+.pattern { margin: 10px 0; padding: 10px; background-color: #fff3cd; border-left: 4px solid #ffc107; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+th { background-color: #f5f5f5; }
+</style>
+</head>
+<body>
+<h1>PE Analysis Report</h1>
+<p><strong>File:</strong> C:\Windows\System32\notepad.exe</p>
+<p><strong>Total Imported APIs:</strong> 315</p>
+<p><strong>Imported DLLs:</strong> API-MS-WIN-BASE-UTIL-L1-1-0.DLL, API-MS-WIN-CORE-COM-L1-1-0.DLL, API-MS-WIN-CORE-DATETIME-L1-1-0.DLL, API-MS-WIN-CORE-DEBUG-L1-1-0.DLL, API-MS-WIN-CORE-DELAYLOAD-L1-1-0.DLL, API-MS-WIN-CORE-DELAYLOAD-L1-1-1.DLL, API-MS-WIN-CORE-ERRORHANDLING-L1-1-0.DLL, API-MS-WIN-CORE-FILE-L1-1-0.DLL, API-MS-WIN-CORE-HANDLE-L1-1-0.DLL, API-MS-WIN-CORE-HEAP-L1-1-0.DLL, API-MS-WIN-CORE-HEAP-L2-1-0.DLL, API-MS-WIN-CORE-HEAP-OBSOLETE-L1-1-0.DLL, API-MS-WIN-CORE-INTERLOCKED-L1-1-0.DLL, API-MS-WIN-CORE-LARGEINTEGER-L1-1-0.DLL, API-MS-WIN-CORE-LIBRARYLOADER-L1-2-0.DLL, API-MS-WIN-CORE-LIBRARYLOADER-L1-2-1.DLL, API-MS-WIN-CORE-LOCALIZATION-L1-2-0.DLL, API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0.DLL, API-MS-WIN-CORE-MEMORY-L1-1-0.DLL, API-MS-WIN-CORE-PROCESSENVIRONMENT-L1-1-0.DLL, API-MS-WIN-CORE-PROCESSTHREADS-L1-1-0.DLL, API-MS-WIN-CORE-PROCESSTHREADS-L1-1-1.DLL, API-MS-WIN-CORE-PROFILE-L1-1-0.DLL, API-MS-WIN-CORE-PSAPI-L1-1-0.DLL, API-MS-WIN-CORE-REGISTRY-L1-1-0.DLL, API-MS-WIN-CORE-REGISTRY-L1-1-1.DLL, API-MS-WIN-CORE-REGISTRY-L2-1-0.DLL, API-MS-WIN-CORE-RTLSUPPORT-L1-1-0.DLL, API-MS-WIN-CORE-SHLWAPI-LEGACY-L1-1-0.DLL, API-MS-WIN-CORE-STRING-L1-1-0.DLL, API-MS-WIN-CORE-STRING-OBSOLETE-L1-1-0.DLL, API-MS-WIN-CORE-SYNCH-L1-1-0.DLL, API-MS-WIN-CORE-SYSINFO-L1-1-0.DLL, API-MS-WIN-CORE-THREADPOOL-L1-2-0.DLL, API-MS-WIN-CORE-WINDOWSERRORREPORTING-L1-1-3.DLL, API-MS-WIN-CORE-WINRT-ERROR-L1-1-0.DLL, API-MS-WIN-CORE-WINRT-ERROR-L1-1-1.DLL, API-MS-WIN-CORE-WINRT-L1-1-0.DLL, API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL, API-MS-WIN-CRT-PRIVATE-L1-1-0.DLL, API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL, API-MS-WIN-CRT-STRING-L1-1-0.DLL, API-MS-WIN-EVENTING-PROVIDER-L1-1-0.DLL, API-MS-WIN-SECURITY-BASE-L1-1-0.DLL, API-MS-WIN-SHCORE-OBSOLETE-L1-1-0.DLL, API-MS-WIN-SHCORE-PATH-L1-1-0.DLL, API-MS-WIN-SHCORE-SCALING-L1-1-1.DLL, COMCTL32.DLL, GDI32.DLL, USER32.DLL</p>
+<h2>Capability Summary</h2>
+<div class='capability'>
+<strong>unknown:</strong> Uses APIs that are not yet categorized. 
+(count=307, examples: AbortDoc, AcquireSRWLockExclusive, AcquireSRWLockShared, BeginPaint, CharNextW)
+</div>
+<div class='capability'>
+<strong>process_management:</strong> Can create or manage other processes. 
+(count=1, examples: CreateProcessW)
+</div>
+<div class='capability'>
+<strong>registry:</strong> Can read or modify Windows registry keys. 
+(count=3, examples: RegCreateKeyExW, RegOpenKeyExW, RegSetValueExW)
+</div>
+<div class='capability'>
+<strong>file_io:</strong> Can create, read, write, or delete files on disk. 
+(count=4, examples: CreateFileW, DeleteFileW, ReadFile, WriteFile)
+</div>
+<h2>Detected Behavior Patterns</h2>
+<div class='pattern'>
+<strong>registry_persistence:</strong> Can modify the registry, which can be used for configuration or persistence.
+</div>
+<h2>Imported DLLs and Functions</h2>
+<table>
+<tr><th>DLL</th><th>Functions</th></tr>
+<tr><td>API-MS-WIN-BASE-UTIL-L1-1-0.DLL</td><td>IsTextUnicode</td></tr>
+<tr><td>API-MS-WIN-CORE-COM-L1-1-0.DLL</td><td>CoCreateFreeThreadedMarshaler, CoCreateGuid, CoCreateInstance, CoInitializeEx, CoTaskMemAlloc, CoTaskMemFree, CoUninitialize, CoWaitForMultipleHandles, PropVariantClear</td></tr>
+<tr><td>API-MS-WIN-CORE-DATETIME-L1-1-0.DLL</td><td>GetDateFormatW, GetTimeFormatW</td></tr>
+<tr><td>API-MS-WIN-CORE-DEBUG-L1-1-0.DLL</td><td>DebugBreak, IsDebuggerPresent, OutputDebugStringW</td></tr>
+<tr><td>API-MS-WIN-CORE-DELAYLOAD-L1-1-0.DLL</td><td>DelayLoadFailureHook</td></tr>
+<tr><td>API-MS-WIN-CORE-DELAYLOAD-L1-1-1.DLL</td><td>ResolveDelayLoadedAPI</td></tr>
+<tr><td>API-MS-WIN-CORE-ERRORHANDLING-L1-1-0.DLL</td><td>GetLastError, RaiseException, SetLastError, SetUnhandledExceptionFilter, UnhandledExceptionFilter</td></tr>
+<tr><td>API-MS-WIN-CORE-FILE-L1-1-0.DLL</td><td>CreateDirectoryW, CreateFileW, DeleteFileW, FindClose, FindFirstFileW, GetDiskFreeSpaceExW, GetFileAttributesExW, GetFileAttributesW, GetFileInformationByHandle, GetFullPathNameW, ReadFile, SetEndOfFile, WriteFile</td></tr>
+<tr><td>API-MS-WIN-CORE-HANDLE-L1-1-0.DLL</td><td>CloseHandle</td></tr>
+<tr><td>API-MS-WIN-CORE-HEAP-L1-1-0.DLL</td><td>GetProcessHeap, HeapAlloc, HeapFree, HeapSetInformation</td></tr>
+<tr><td>API-MS-WIN-CORE-HEAP-L2-1-0.DLL</td><td>GlobalAlloc, GlobalFree, LocalAlloc, LocalFree, LocalLock, LocalReAlloc, LocalUnlock</td></tr>
+<tr><td>API-MS-WIN-CORE-HEAP-OBSOLETE-L1-1-0.DLL</td><td>GlobalLock, GlobalUnlock, LocalSize</td></tr>
+<tr><td>API-MS-WIN-CORE-INTERLOCKED-L1-1-0.DLL</td><td>InitializeSListHead</td></tr>
+<tr><td>API-MS-WIN-CORE-LARGEINTEGER-L1-1-0.DLL</td><td>MulDiv</td></tr>
+<tr><td>API-MS-WIN-CORE-LIBRARYLOADER-L1-2-0.DLL</td><td>FindResourceExW, FreeLibrary, GetModuleFileNameA, GetModuleFileNameW, GetModuleHandleA, GetModuleHandleExW, GetModuleHandleW, GetProcAddress, LoadResource, LockResource</td></tr>
+<tr><td>API-MS-WIN-CORE-LIBRARYLOADER-L1-2-1.DLL</td><td>FindResourceW</td></tr>
+<tr><td>API-MS-WIN-CORE-LOCALIZATION-L1-2-0.DLL</td><td>FindNLSString, FormatMessageW, GetACP, GetLocaleInfoW</td></tr>
+<tr><td>API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0.DLL</td><td>GetUserDefaultUILanguage</td></tr>
+<tr><td>API-MS-WIN-CORE-MEMORY-L1-1-0.DLL</td><td>CreateFileMappingW, MapViewOfFile, UnmapViewOfFile</td></tr>
+<tr><td>API-MS-WIN-CORE-PROCESSENVIRONMENT-L1-1-0.DLL</td><td>GetCommandLineW, GetCurrentDirectoryW, SetCurrentDirectoryW</td></tr>
+<tr><td>API-MS-WIN-CORE-PROCESSTHREADS-L1-1-0.DLL</td><td>CreateProcessW, GetCurrentProcess, GetCurrentProcessId, GetCurrentThreadId, GetStartupInfoW, OpenProcessToken, TerminateProcess</td></tr>
+<tr><td>API-MS-WIN-CORE-PROCESSTHREADS-L1-1-1.DLL</td><td>GetProcessMitigationPolicy, IsProcessorFeaturePresent</td></tr>
+<tr><td>API-MS-WIN-CORE-PROFILE-L1-1-0.DLL</td><td>QueryPerformanceCounter</td></tr>
+<tr><td>API-MS-WIN-CORE-PSAPI-L1-1-0.DLL</td><td>K32GetModuleFileNameExW</td></tr>
+<tr><td>API-MS-WIN-CORE-REGISTRY-L1-1-0.DLL</td><td>RegCloseKey, RegCreateKeyExW, RegDeleteKeyExW, RegEnumValueW, RegGetValueW, RegOpenKeyExW, RegQueryInfoKeyW, RegQueryValueExW, RegSetValueExW</td></tr>
+<tr><td>API-MS-WIN-CORE-REGISTRY-L1-1-1.DLL</td><td>RegSetKeyValueW</td></tr>
+<tr><td>API-MS-WIN-CORE-REGISTRY-L2-1-0.DLL</td><td>RegCreateKeyW</td></tr>
+<tr><td>API-MS-WIN-CORE-RTLSUPPORT-L1-1-0.DLL</td><td>RtlCaptureContext, RtlLookupFunctionEntry, RtlVirtualUnwind</td></tr>
+<tr><td>API-MS-WIN-CORE-SHLWAPI-LEGACY-L1-1-0.DLL</td><td>PathFileExistsW, PathFindExtensionW, PathIsFileSpecW</td></tr>
+<tr><td>API-MS-WIN-CORE-STRING-L1-1-0.DLL</td><td>CompareStringOrdinal, FoldStringW, MultiByteToWideChar, WideCharToMultiByte</td></tr>
+<tr><td>API-MS-WIN-CORE-STRING-OBSOLETE-L1-1-0.DLL</td><td>lstrcmpiW</td></tr>
+<tr><td>API-MS-WIN-CORE-SYNCH-L1-1-0.DLL</td><td>AcquireSRWLockExclusive, AcquireSRWLockShared, CreateEventExW, CreateMutexExW, CreateSemaphoreExW, DeleteCriticalSection, EnterCriticalSection, InitializeCriticalSectionEx, LeaveCriticalSection, OpenSemaphoreW, ReleaseMutex, ReleaseSRWLockExclusive, ReleaseSRWLockShared, ReleaseSemaphore, SetEvent, WaitForSingleObject, WaitForSingleObjectEx</td></tr>
+<tr><td>API-MS-WIN-CORE-SYSINFO-L1-1-0.DLL</td><td>GetLocalTime, GetSystemTimeAsFileTime</td></tr>
+<tr><td>API-MS-WIN-CORE-THREADPOOL-L1-2-0.DLL</td><td>CloseThreadpoolTimer, CreateThreadpoolTimer, SetThreadpoolTimer, WaitForThreadpoolTimerCallbacks</td></tr>
+<tr><td>API-MS-WIN-CORE-WINDOWSERRORREPORTING-L1-1-3.DLL</td><td>RegisterApplicationRestart</td></tr>
+<tr><td>API-MS-WIN-CORE-WINRT-ERROR-L1-1-0.DLL</td><td>SetRestrictedErrorInfo</td></tr>
+<tr><td>API-MS-WIN-CORE-WINRT-ERROR-L1-1-1.DLL</td><td>RoGetMatchingRestrictedErrorInfo</td></tr>
+<tr><td>API-MS-WIN-CORE-WINRT-L1-1-0.DLL</td><td>RoGetActivationFactory</td></tr>
+<tr><td>API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL</td><td>WindowsCreateString, WindowsCreateStringReference, WindowsDeleteString, WindowsGetStringRawBuffer</td></tr>
+<tr><td>API-MS-WIN-CRT-PRIVATE-L1-1-0.DLL</td><td>_CxxThrowException, __C_specific_handler, __CxxFrameHandler3, __current_exception, __current_exception_context, _o___p__commode, _o___std_exception_copy, _o___std_exception_destroy, _o___stdio_common_vswprintf, _o__beginthreadex, _o__callnewh, _o__cexit, _o__configthreadlocale, _o__configure_wide_argv, _o__crt_atexit, _o__errno, _o__exit, _o__get_wide_winmain_command_line, _o__initialize_onexit_table, _o__initialize_wide_environment, _o__invalid_parameter_noinfo, _o__purecall, _o__register_onexit_function, _o__seh_filter_exe, _o__set_app_type, _o__set_fmode, _o__set_new_mode, _o__wcsicmp, _o__wtol, _o_exit, _o_free, _o_iswdigit, _o_malloc, _o_terminate, memcmp, memcpy, memmove, wcschr, wcsrchr</td></tr>
+<tr><td>API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL</td><td>_c_exit, _initterm, _initterm_e, _register_thread_local_exe_atexit_callback</td></tr>
+<tr><td>API-MS-WIN-CRT-STRING-L1-1-0.DLL</td><td>memset, wcscmp, wcsnlen</td></tr>
+<tr><td>API-MS-WIN-EVENTING-PROVIDER-L1-1-0.DLL</td><td>EventRegister, EventSetInformation, EventUnregister, EventWriteTransfer</td></tr>
+<tr><td>API-MS-WIN-SECURITY-BASE-L1-1-0.DLL</td><td>GetTokenInformation</td></tr>
+<tr><td>API-MS-WIN-SHCORE-OBSOLETE-L1-1-0.DLL</td><td>SHStrDupW</td></tr>
+<tr><td>API-MS-WIN-SHCORE-PATH-L1-1-0.DLL</td><td>ORDINAL_170</td></tr>
+<tr><td>API-MS-WIN-SHCORE-SCALING-L1-1-1.DLL</td><td>GetDpiForMonitor</td></tr>
+<tr><td>COMCTL32.DLL</td><td>CreateStatusWindowW, ImageList_Create, ImageList_Destroy, ImageList_Draw, ImageList_GetIconSize, ImageList_ReplaceIcon, ImageList_SetBkColor, ORDINAL_345, ORDINAL_381, ORDINAL_410, ORDINAL_413</td></tr>
+<tr><td>GDI32.DLL</td><td>AbortDoc, CreateCompatibleDC, CreateDCW, CreateFontIndirectW, CreateSolidBrush, DeleteDC, DeleteObject, EndDoc, EndPage, EnumFontsW, GetDeviceCaps, GetTextExtentPoint32W, GetTextFaceW, GetTextMetricsW, LPtoDP, SelectObject, SetAbortProc, SetBkColor, SetBkMode, SetMapMode, SetViewportExtEx, SetWindowExtEx, StartDocW, StartPage, TextOutW</td></tr>
+<tr><td>USER32.DLL</td><td>BeginPaint, CharNextW, CharUpperW, CheckDlgButton, CheckMenuItem, CheckRadioButton, CloseClipboard, CreateDialogIndirectParamW, CreateDialogParamW, CreateWindowExW, DefWindowProcW, DestroyIcon, DestroyWindow, DialogBoxParamW, DispatchMessageW, DrawFocusRect, DrawTextExW, DrawTextW, EnableMenuItem, EnableWindow, EndDialog, EndPaint, FillRect, GetClientRect, GetDC, GetDlgCtrlID, GetDlgItem, GetDlgItemTextW, GetDpiForWindow, GetFocus, GetForegroundWindow, GetKeyboardLayout, GetMenu, GetMessageW, GetPropW, GetSubMenu, GetSystemMenu, GetWindowLongW, GetWindowPlacement, GetWindowTextLengthW, GetWindowTextW, InvalidateRect, IsClipboardFormatAvailable, IsDialogMessageW, IsDlgButtonChecked, IsIconic, IsWindow, LoadAcceleratorsW, LoadCursorW, LoadIconW, LoadImageW, LoadStringW, MessageBeep, MessageBoxW, MonitorFromWindow, MoveWindow, NotifyWinEvent, OpenClipboard, PeekMessageW, PostMessageW, PostQuitMessage, RedrawWindow, RegisterClassExW, RegisterWindowMessageW, ReleaseDC, RemovePropW, SendDlgItemMessageW, SendMessageW, SetActiveWindow, SetCursor, SetDlgItemTextW, SetFocus, SetPropW, SetScrollPos, SetThreadDpiAwarenessContext, SetWinEventHook, SetWindowLongW, SetWindowPlacement, SetWindowPos, SetWindowTextW, ShowWindow, SystemParametersInfoForDpi, TrackMouseEvent, TranslateAcceleratorW, TranslateMessage, UnhookWinEvent, UpdateWindow</td></tr>
+</table>
+<hr>
+<p><em>This analysis is heuristic and based only on statically imported APIs. 
+Dynamically resolved APIs or packed/obfuscated binaries may hide behavior.</em></p>
+</body>
+</html>
